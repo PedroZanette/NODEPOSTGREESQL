@@ -1,13 +1,13 @@
 async function connect() {
 
-    if (global.connection)
+    if (global.connection) 
         return global.connection.connect();
 
         const { Pool } = require('pg');
         const pool = new Pool({
-            connectionString: process.env.CONNETION_STRING
+            connectionString: process.env.CONNECTION_STRING
         })
-        const client = await pool.cennect();
+        const client = await pool.connect();
         console.log("Criou o pool de conexão");
 
         const res = await client.query('select now()');
@@ -22,7 +22,7 @@ async function connect() {
 
     async function selectCustomers() {
         const client = await connect();
-        const res = await client.query("SELECT * FROM clientes");
+        const res = await client.query("SELECT * FROM frangoDoG");
         return res.rows;
     }
 
